@@ -35,8 +35,8 @@ app.use((req, res, next) => {
 })
 
 /** Routes */
-app.use('/products', route.productRoutes)
-app.use('/orders', route.orderRoutes)
+app.use('/product', route.productRoutes)
+app.use('/order', route.orderRoutes)
 
 /** Handle request */
 app.use(middlewares.errorHandler);
