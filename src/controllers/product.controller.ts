@@ -6,8 +6,9 @@ export const getProducts = async (req: Request, res: Response) => {
         const products = await Product.find();
 
         return res.status(200).json({ products })
-    } catch (err) {
-        return res.status(400).json({ err })
+    } catch (err: any) {
+        console.log(err.message)
+        return res.status(500).json({ message: "Internal Server Error" })
     }
 }
 
@@ -19,8 +20,9 @@ export const getProductById = async (req: Request, res: Response) => {
         if (!product) return res.status(404).json({ message: "Not found!" })
 
         return res.status(200).json({ product })
-    } catch (err) {
-        return res.status(400).json({ err })
+    } catch (err: any) {
+        console.log(err.message)
+        return res.status(500).json({ message: "Internal Server Error" })
     }
 }
 
@@ -32,8 +34,9 @@ export const createProduct = async (req: Request, res: Response) => {
             name, price
         })
         return res.status(201).json({ product })
-    } catch (err) {
-        return res.status(400).json({ err })
+    } catch (err: any) {
+        console.log(err.message)
+        return res.status(500).json({ message: "Internal Server Error" })
     }
 }
 
@@ -51,8 +54,9 @@ export const updateProduct = async (req: Request, res: Response) => {
             { new: true })
         if (!product) return res.status(404).json({ message: "Product doesn't exist!" })
         return res.status(201).json({ product })
-    } catch (err) {
-        return res.status(400).json({ err })
+    } catch (err: any) {
+        console.log(err.message)
+        return res.status(500).json({ message: "Internal Server Error" })
     }
 }
 
@@ -62,8 +66,9 @@ export const deleteProduct = async (req: Request, res: Response) => {
         const product = await Product.findByIdAndDelete(productId)
         if (!product) return res.status(404).json({ message: "Product doesn't exist!" })
         return res.status(201).json({ product })
-    } catch (err) {
-        return res.status(400).json({ err })
+    } catch (err: any) {
+        console.log(err.message)
+        return res.status(500).json({ message: "Internal Server Error" })
     }
 }
 
