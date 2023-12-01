@@ -1,4 +1,4 @@
-import orderRoutes from "./orders"
-import productRoutes from "./products"
+import orderRoutes from "./order"
+import productRoutes from "./product"
 
-export default {orderRoutes, productRoutes}
+export default { orderRoutes, productRoutes }
