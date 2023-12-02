@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import Product from "../models/product";
+import { Multer } from "multer";
 
 export const getProducts = async (req: Request, res: Response) => {
     try {
@@ -29,9 +30,10 @@ export const getProductById = async (req: Request, res: Response) => {
 export const createProduct = async (req: Request, res: Response) => {
     const name = req.body.name
     const price = req.body.price
+    const productImage = req.file?.path
     try {
         const product = await Product.create({
-            name, price
+            name, price, productImage
         })
         return res.status(201).json({ product })
     } catch (err: any) {

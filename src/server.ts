@@ -15,7 +15,8 @@ connectDB();
 /**Log status */
 app.use(middlewares.logStatus)
 
-/** Body parser */
+/** Body parser | multipart/formdata */
+app.use('/uploads', express.static('uploads'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
